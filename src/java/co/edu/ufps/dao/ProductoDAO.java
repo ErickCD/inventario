@@ -32,11 +32,37 @@ public class ProductoDAO {
             );
             l.add(aux);
         }
-        
+
         rs.close();
-        s.close(); 
+        s.close();
         con.cerrarConnection();
         return l;
     }
 
+    public Producto productoId(int id) throws ClassNotFoundException, SQLException {
+
+        Producto p = null;
+        conexion con = new conexion();
+        // Preparamos la consulta
+        Statement s = con.getConnection().createStatement();
+        ResultSet rs = s.executeQuery("SELECT * FROM producto WHERE id='" + id + "';");
+
+        while (rs.next()) {
+            Producto aux = new Producto(
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("tipo"),
+                    rs.getFloat("precioVenta"),
+                    rs.getInt("existencias"),
+                    rs.getFloat("costounitario"),
+                    rs.getFloat("saldoinventario")
+            );
+            p = aux;
+        }
+
+        rs.close();
+        s.close();
+        con.cerrarConnection();
+        return p;
+    }
 }

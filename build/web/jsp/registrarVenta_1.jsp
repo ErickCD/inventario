@@ -8,9 +8,10 @@
 <%@page import="co.edu.ufps.dto.Cliente"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="controlador" class="co.edu.ufps.controlador.Controlador" scope="session">
+<jsp:useBean id="controlador" class="co.edu.ufps.controlador.Controller" scope="session">
 
 </jsp:useBean>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -76,7 +77,7 @@
                     </tr>
                 </thead>
                 <tbody id="cont">
-                    
+
                 </tbody>
             </table>
         </div>
@@ -84,13 +85,11 @@
         <!-- Script -->
         <script src="/inventario/materialize/js/jquery-2.1.1.min.js"></script>
         <script src="/inventario/materialize/js/materialize.min.js"></script>
-
         <script>
             $(document).ready(function () {
                 $('select').material_select();
             });
         </script>
-
         <script>
             $(document).ready(function () {
                 $("#btn").click(function () {
@@ -99,51 +98,12 @@
                                 producto: $("#producto").val(),
                                 cantidad: $("#cantidad").val()
                             },
-                            function (data, status, cant) {
+                            function (data, status) {
                                 alert("Data: " + data + "\nStatus: " + status);
                                 $("#cont").html(data);
-                                $("#cantidad").html(cant);
-                            }
-                    );
-            
+                            });
                 });
             });
         </script>
-
-        <footer class="page-footer teal">
-            <div class="container">
-                <div class="row">
-                    <div class="col m4 s12 center">
-                        <h5 class="white-text">Universidad</h5>
-                        <p class="grey-text text-lighten-4">UFPS - Universidad Francisco de Paula Santander</p>
-                        <img src="../img/ufps.png" width="150px" height="150px" alt="UFPS" />
-                    </div>
-                    <div class="col m4 s12 center">
-                        <h5 class="white-text">Desarolladores</h5>
-                        <ul>
-                            <li><a href="mailto:acheron_1405@hotmail.com" class="white-text">acheron_1405@hotmail.com</a></li>
-                            <li><a href="mailto:manuelflorezw@outlook.com" class="white-text">manuelflorezw@outlook.com</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col m4 s12 center">
-                        <h5 class="white-text">Carrera</h5>
-                        <ul>
-                            <p class="grey-text text-lighten-4">Facultad de ingeniería en Sistemas Computacionales</p>
-                        </ul>
-                        <img src="../img/sistemasufps.png" width="150px" height="150px" alt="UFPS" />
-                    </div>
-
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Realizado por <a class="brown-text text-lighten-3">Manuel Florez y Erick Clair</a>
-                </div>
-            </div>
-        </footer>
-        <!-- Script -->
-        <script src="/inventario/materialize/js/jquery-2.1.1.min.js"></script>
-        <script src="/inventario/materialize/js/materialize.min.js"></script>
     </body>
 </html>

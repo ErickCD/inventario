@@ -34,4 +34,17 @@ public class Business {
         }
         return null;
     }
+
+    public String validarProducto(int idProducto, int cantidad) {
+        ProductoDAO a = new ProductoDAO();
+        try {
+            Producto p = a.productoId(idProducto);
+            if (cantidad <= p.getExistencias()) {
+                return "Se agrega el producto a su pedido";
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Business.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

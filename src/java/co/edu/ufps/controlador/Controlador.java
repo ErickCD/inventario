@@ -22,4 +22,12 @@ public class Controlador implements Controller {
         return myBusiness.verTotalVentas();
     }
 
+    public String validarPedido(int idProducto, int cantidad) {
+        return myBusiness.validarProducto(idProducto, cantidad);
+    }
+
+    @Override
+    public List<Producto> agregarProducto(int idProducto, int cantidad) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
